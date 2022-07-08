@@ -1,13 +1,12 @@
-package pt.amane.ifoodapp.model;
+package pt.amane.ifoodapp.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import pt.amane.ifoodapp.model.enums.StatusPedido;
+import pt.amane.ifoodapp.domain.model.enums.StatusPedido;
 
 import javax.persistence.*;
-import java.awt.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.Instant;

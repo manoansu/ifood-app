@@ -1,4 +1,4 @@
-package pt.amane.ifoodapp.model;
+package pt.amane.ifoodapp.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,16 +7,15 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Entity
-public class Produto implements Serializable {
+public class Permissao implements Serializable {
 
     @EqualsAndHashCode.Include
     @Id
@@ -24,9 +23,7 @@ public class Produto implements Serializable {
     private Long id;
     private String nome;
     private String descricao;
-    private BigDecimal preco;
-    private Boolean ativo;
 
-    @OneToMany(mappedBy = "produto")
-    private List<Restaurante> restaurantes = new ArrayList<>();
+    @ManyToMany(mappedBy = "permissoes")
+    private Set<Grupo> grupos = new HashSet<>();
 }

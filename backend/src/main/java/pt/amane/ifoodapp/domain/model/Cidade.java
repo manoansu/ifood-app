@@ -1,4 +1,4 @@
-package pt.amane.ifoodapp.model;
+package pt.amane.ifoodapp.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,16 +16,13 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Data
 @Entity
-public class FotoProduto implements Serializable {
+public class Cidade implements Serializable {
 
     @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nomeArquivo;
-    private String descricao;
-    private String contentType;
-    private Long tamanho;
+    private String nome;
 
-    private Produto produto;
+    private Estado estado;
 }

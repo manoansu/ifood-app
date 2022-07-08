@@ -1,4 +1,4 @@
-package pt.amane.ifoodapp.model;
+package pt.amane.ifoodapp.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,18 +12,16 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Embeddable
-public class Endereco implements Serializable {
+@Entity
+public class FormaPagamento implements Serializable {
 
-    /*@EqualsAndHashCode.Include
+    @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;*/
-    private String cep;
-    private String lougradouro;
-    private String numero;
-    private String complemento;
-    private String bairro;
+    private Long id;
+    private String descricao;
 
-    private Estado cidade;
+    @ManyToOne
+    @JoinColumn(name = "restaurante_id")
+    private Restaurante restaurante;
 }
