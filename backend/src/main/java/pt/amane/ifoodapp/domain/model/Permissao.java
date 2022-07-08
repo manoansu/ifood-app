@@ -21,9 +21,10 @@ public class Permissao implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
-    private String descricao;
 
-    @ManyToMany(mappedBy = "permissoes")
-    private Set<Grupo> grupos = new HashSet<>();
+    @Column(nullable = false)
+    private String nome;
+
+    @Column(nullable = false)
+    private String descricao;
 }

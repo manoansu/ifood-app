@@ -21,6 +21,8 @@ public class Grupo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String nome;
 
     @ManyToMany(fetch = FetchType.EAGER)

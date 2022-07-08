@@ -22,11 +22,20 @@ public class Produto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String nome;
+
+    @Column(nullable = false)
     private String descricao;
+
+    @Column(nullable = false)
     private BigDecimal preco;
+
+    @Column(nullable = false)
     private Boolean ativo;
 
-    @OneToMany(mappedBy = "produto")
-    private List<Restaurante> restaurantes = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Restaurante restaurante;
 }

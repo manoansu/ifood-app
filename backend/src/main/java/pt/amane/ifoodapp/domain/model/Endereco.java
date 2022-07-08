@@ -8,22 +8,30 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Embeddable
 public class Endereco implements Serializable {
 
-    /*@EqualsAndHashCode.Include
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;*/
+
+    @Column(name = "endereco_cep")
     private String cep;
-    private String lougradouro;
+
+    @Column(name = "endereco_logradouro")
+    private String logradouro;
+
+    @Column(name = "endereco_numero")
     private String numero;
+
+    @Column(name = "endereco_complemento")
     private String complemento;
+
+    @Column(name = "endereco_bairro")
     private String bairro;
 
-    private Estado cidade;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "endereco_cidade_id")
+    private Cidade cidade;
 }

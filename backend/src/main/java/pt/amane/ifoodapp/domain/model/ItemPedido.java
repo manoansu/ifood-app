@@ -8,8 +8,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
@@ -22,12 +20,32 @@ public class ItemPedido implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer quantidade;
+
     private BigDecimal precoUnitario;
     private BigDecimal precoTotal;
-    private String observação;
+    private Integer quantidade;
+    private String observacao;
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Pedido pedido;
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
     private Produto produto;
 
-    @OneToMany(mappedBy = "itemPedido")
-    private List<Pedido> pedidos = new ArrayList<>();
+    public void calcularPrecoTotal() {
+        BigDecimal precoUnitario = this.getPrecoUnitario();
+        Integer quantidade = this.getQuantidade();
+
+        if (precoUnitario == null) {
+            precoUnitario = BigDecimal.ZERO;
+        }
+
+        if (quantidade == null) {
+            quantidade = 0;
+        }
+
+        this.setPrecoTotal(precoUnitario.multiply(new BigDecimal(quantidade)));
+    }
 }
