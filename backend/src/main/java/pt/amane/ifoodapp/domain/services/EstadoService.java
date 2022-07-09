@@ -43,16 +43,6 @@ public class EstadoService {
 	}
 
 	@Transactional
-	public Estado update(Long estadoId, Estado estado){
-		try {
-			Estado newEstado = estadoRepository.getOne(estadoId);
-			newEstado.setNome(estado.getNome());
-			return estadoRepository.save(estado);
-		}catch (EntityNotFoundException e){
-			throw new EstadoNaoEncontradoException(String.format(MSG_ESTADO_EM_USO, estadoId));
-		}
-	}
-
 	public void delete(Long estadoId) {
 		try {
 			estadoRepository.deleteById(estadoId);

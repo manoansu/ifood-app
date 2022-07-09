@@ -3,7 +3,13 @@ package pt.amane.ifoodapp.api.configs;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import pt.amane.ifoodapp.domain.filters.VendaDiariaFilter;
+import pt.amane.ifoodapp.domain.model.dto.VendaDiariaDTO;
 import pt.amane.ifoodapp.domain.services.FotoStorageService;
+import pt.amane.ifoodapp.domain.services.VendaQueryService;
+import pt.amane.ifoodapp.domain.services.VendaReportService;
+
+import java.util.List;
 
 @Configuration
 public class ApplicationConfig {
@@ -30,6 +36,26 @@ public class ApplicationConfig {
             @Override
             public void remover(String nomeArquivo) {
 
+            }
+        };
+    }
+
+    @Bean
+    public VendaQueryService vendaQueryService(){
+        return new VendaQueryService() {
+            @Override
+            public List<VendaDiariaDTO> consultarVendasDiarias(VendaDiariaFilter filtro, String timeOffset) {
+                return null;
+            }
+        };
+    }
+
+    @Bean
+    public VendaReportService vendaReportService(){
+        return new VendaReportService() {
+            @Override
+            public byte[] emitirVendasDiarias(VendaDiariaFilter filtro, String timeOffset) {
+                return new byte[0];
             }
         };
     }

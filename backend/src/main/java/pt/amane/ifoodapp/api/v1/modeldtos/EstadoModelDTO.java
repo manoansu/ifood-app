@@ -1,4 +1,4 @@
-package pt.amane.ifoodapp.api.v1.models;
+package pt.amane.ifoodapp.api.v1.modeldtos;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -7,7 +7,7 @@ import org.springframework.hateoas.server.core.Relation;
 
 @Relation(collectionRelation = "estados")
 @Data
-public class EstadoModel extends RepresentationModel<EstadoModel> {
+public class EstadoModelDTO extends RepresentationModel<EstadoModelDTO> {
 
     @ApiModelProperty(example = "1")
     private Long id;
